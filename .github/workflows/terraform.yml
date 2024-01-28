@@ -2,15 +2,9 @@ name: Terraform Workflow
 
 on:
  workflow_dispatch:  # Manually triggered workflow
-  inputs:
-    environment:
-     description: 'environment to be deployed'
-     required: true
-     default: ''
-
-# push:
- #  branches:
-  #   - feature/terraform
+ push:
+   branches:
+     - feature/terraform
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -18,7 +12,7 @@ jobs:
       run:
         working-directory: terraform
     
-    environment: ${{github.event.inputs.environment}} #dev
+    environment: dev
 
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -31,10 +25,10 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.0.0  
+          terraform_version: 1.4.3  
 
       - name: Initialize Terraform
-        run: terraform init
+        run: terraform init -reconfigure
 
       - name: Plan Terraform
         run: terraform plan
