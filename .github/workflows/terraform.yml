@@ -1,7 +1,7 @@
 name: Terraform Workflow
 
 on:
-  workflow_dispatch:  # Manually triggered workflow
+ workflow_dispatch:  # Manually triggered workflow
   #push:
   # branches:
   #   - feature/terraform
