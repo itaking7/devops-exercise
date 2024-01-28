@@ -2,9 +2,15 @@ name: Terraform Workflow
 
 on:
  workflow_dispatch:  # Manually triggered workflow
- push:
-   branches:
-     - feature/terraform
+  inputs:
+    environment:
+     description: 'environment to be deployed'
+     required: true
+     default: ''
+
+# push:
+ #  branches:
+  #   - feature/terraform
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -12,7 +18,7 @@ jobs:
       run:
         working-directory: terraform
     
-    environment: dev
+    environment: ${{github.event.inputs.environment}} #dev
 
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
