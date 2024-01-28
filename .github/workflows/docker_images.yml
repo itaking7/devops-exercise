@@ -34,7 +34,7 @@ jobs:
           IMAGE_TAG: "latest"
         run: |
           cd front
-          docker build -t $ECR_REPOSITORY$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
           docker tag $ECR_REPOSITORY:$IMAGE_TAG 762407495953.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
           docker push 762407495953.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
 
