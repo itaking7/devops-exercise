@@ -9,6 +9,8 @@ jobs:
     defaults:
       run:
         working-directory: terraform
+    
+    environment: dev
 
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
