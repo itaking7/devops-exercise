@@ -35,7 +35,7 @@ jobs:
 
       - name: Frontend docker build & push
         env:
-          DOCKER_REPOSITORY: "devops-exercise"
+          DOCKER_REPOSITORY: "dominionsystemsinc/devops-exercise"
           IMAGE_TAG: "latest"
         run: |
           cd front
