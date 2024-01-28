@@ -2,9 +2,9 @@ name: Terraform Workflow
 
 on:
   workflow_dispatch:  # Manually triggered workflow
-  push:
-    branches:
-      - feature/terraform
+  #push:
+  # branches:
+  #   - feature/terraform
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -34,5 +34,5 @@ jobs:
         run: terraform plan
 
       - name: Apply Terraform
-        run: terraform apply -auto-approve
+        run: terraform destroy -auto-approve
 
