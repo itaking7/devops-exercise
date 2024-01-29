@@ -64,10 +64,10 @@ resource "docker_container" "front_container" {
     internal = 3000
     external = 3000
   }
-  env = {
-    BACKEND_API_URL = "http://back_container:4000"
-    CLIENT_API_URL  = "http://back_container:4000"
-  }
+ # env = {
+  #  BACKEND_API_URL = "http://back_container:4000"
+   # CLIENT_API_URL  = "http://back_container:4000"
+  #}
   depends_on = [docker_container.back_container]
 }
 
