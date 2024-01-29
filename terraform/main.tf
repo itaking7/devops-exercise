@@ -25,13 +25,13 @@ terraform {
   required_providers {
     docker = {
       source = "kreuzwerker/docker"
-      #version = "5.34.0"
+      version = "3.0.2"
     }
   }
 }
 # Define Docker provider
 provider "docker" {
-  host = "tcp://172.31.46.111:2375/"
+  host = "tcp://172.31.46.111:2376/"
 }
 
 # Define Docker containers
@@ -51,9 +51,9 @@ resource "docker_container" "back_container" {
     internal = 4000
     external = 4000
   }
-  env = {
-    REDIS_SERVER = "redis_container:6379"
-  }
+  #env = {
+   # REDIS_SERVER = "redis_container:6379"
+  #}
   depends_on = [docker_container.redis_container]
 }
 
