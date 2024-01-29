@@ -22,7 +22,7 @@ terraform {
 */
 
 # Define Docker provider
-provider "docker" {
+provider "kreuzwerker/docker" {
   host = "tcp://172.31.46.111:2375/"
 }
 
