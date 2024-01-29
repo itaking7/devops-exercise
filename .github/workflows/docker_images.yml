@@ -37,7 +37,7 @@ jobs:
       
       - name: Backend docker build & push
         env:
-          DOCKER_REPOSITORY: "dominionsystemsinc/frontend-devops-exercise"
+          DOCKER_REPOSITORY: "dominionsystemsinc/backend-devops-exercise"
           IMAGE_TAG: "latest"
         run: |
           cd back
