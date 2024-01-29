@@ -13,8 +13,6 @@ jobs:
       name: dev
 
     env:
-     # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
@@ -25,22 +23,23 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      #- name: Log in to AWS ECR
-       # run: |
-        #  aws --version
-         # aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 762407495953.dkr.ecr.us-east-1.amazonaws.com
-       
       - name: Log in to Docker Hub
         run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
       - name: Frontend docker build & push
         env:
-          DOCKER_REPOSITORY: "dominionsystemsinc/devops-exercise"
+          DOCKER_REPOSITORY: "dominionsystemsinc/frontend-devops-exercise"
           IMAGE_TAG: "latest"
         run: |
           cd front
           docker build -t $DOCKER_REPOSITORY:$IMAGE_TAG .
           docker push $DOCKER_REPOSITORY:$IMAGE_TAG
-          #docker tag $ECR_REPOSITORY:$IMAGE_TAG 762407495953.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
-          #docker push 762407495953.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
-
+      
+      - name: Backend docker build & push
+        env:
+          DOCKER_REPOSITORY: "dominionsystemsinc/frontend-devops-exercise"
+          IMAGE_TAG: "latest"
+        run: |
+          cd back
+          docker build -t $DOCKER_REPOSITORY:$IMAGE_TAG .
+          docker push $DOCKER_REPOSITORY:$IMAGE_TAG
