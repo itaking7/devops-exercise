@@ -43,3 +43,12 @@ jobs:
           cd back
           docker build -t $DOCKER_REPOSITORY:$IMAGE_TAG .
           docker push $DOCKER_REPOSITORY:$IMAGE_TAG
+
+      - name: Redis image pull & push
+        env:
+          DOCKER_REPOSITORY: "dominionsystemsinc/redis-devops-exercise"
+          IMAGE_TAG: "latest"
+        run: |
+          docker pull redis
+          docker tag redis:$IMAGE_TAG $DOCKER_REPOSITORY:$IMAGE_TAG
+          docker push $DOCKER_REPOSITORY:$IMAGE_TAG
