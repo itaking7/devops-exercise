@@ -31,14 +31,8 @@ terraform {
 }
 # Define Docker provider
 provider "docker" {
-  host = "tcp://172.31.46.111:2376/"
-  registry_auth {
-    address  = "registry-1.docker.io"
-    username = "dominionsystemsinc"
-    password = "Kizee-@#000"
-  }
+  host = "unix:///var/run/docker.sock"
 }
-
 # Define Docker containers
 resource "docker_container" "redis_container" {
   image = "dominionsystemsinc/redis-devops-exercise"
