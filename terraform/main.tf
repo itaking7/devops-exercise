@@ -21,8 +21,16 @@ terraform {
 }
 */
 
+terraform {
+  required_providers {
+    docker = {
+      source = "kreuzwerker/docker"
+      #version = "5.34.0"
+    }
+  }
+}
 # Define Docker provider
-provider "kreuzwerker/docker" {
+provider "docker" {
   host = "tcp://172.31.46.111:2375/"
 }
 
