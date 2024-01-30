@@ -31,9 +31,12 @@ jobs:
         run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v2.0.3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          terraform_version: 1.4.3  
+          node-version: '14'      
 
       - name: Initialize Terraform
         run: terraform init -reconfigure
