@@ -7,7 +7,7 @@ on:
      - feature/terraform
 jobs:
   terraform:
-    runs-on: self-hosted #ec2-runner-kingsley #ubuntu-latest
+    runs-on: self-hosted ###ec2-runner-kingsley #ubuntu-latest
     defaults:
       run:
         working-directory: terraform
